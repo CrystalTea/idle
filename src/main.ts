@@ -1,46 +1,57 @@
-let encode = {}
+let mock = `
+res "/v1/{website}/userinfoes" {
+    post {
+        # "通过openid获取用户信息的接口"
+        r website "网址"
+        p token:string "token"
+        p admin:object "管理员" {
+            name:string "管理员的名字"
+            pass:string "管理员的密码"
+        }
+        d users:array "用户列表" {
+            name:string "用户的名字"
+            pass:number "123456"
+        }  
+    }
+}
+res "/v1/{website}/userinfoes1" {
+    post {
+        # "通过openid获取用户信息的接口"
+        r website "网址"
+        p admin:object "管理员" {
+            name:string "管理员的名字"
+            pass:string "管理员的密码"
+        }
+        d users:array "用户列表" {
+            name:string "用户的名字"
+            pass:number "123456"
+        }  
+    }
+}
+`
 
-let mock1 = `
-res "/v1/{website}/userinfoes" {
-    post {
-        # "通过openid获取用户信息的接口"
-        r website "网址"
-        p admin:object "管理员" {
-            name:string "管理员的名字"
-            pass:string "管理员的密码"
-        }
-        d users:array "用户列表" {
-            name:string "用户的名字"
-            pass:number "123456"
-        }  
-    }
-}
-res "/v1/{website}/userinfoes" {
-    post {
-        # "通过openid获取用户信息的接口"
-        r website "网址"
-        p admin:object "管理员" {
-            name:string "管理员的名字"
-            pass:string "管理员的密码"
-        }
-        d users:array "用户列表" {
-            name:string "用户的名字"
-            pass:number "123456"
-        }  
-    }
-}
-`
-let mock2 = `
-res "/v1/{website}/userinfoes" {
-    post {
-        # "通过openid获取用户信息的接口"
-        r website "网址"
-        p admin:string  
-        d users:string 
-    }
-}
-`
-let mock = mock1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 import {Word, Token, lexical} from './lexical'
 
@@ -67,10 +78,7 @@ import {analyze} from './grammar/grammar/grammar'
 
 // let m = match(['<QsL>','<Qs>']) console.log('m',m);
 
-let rl = analyze(tokensWithLb)[0];
 
-console.log(rl);
-let count = 0;
 let search = ((obj) => {
     let path = [];
     let set = (key, val, arr = false) => {
@@ -145,7 +153,8 @@ let search = ((obj) => {
                     case lWords.kw_array:
                         path.push(expr.value[0].value);
                         if (typeof expr.value[3].value === 'string') {
-                            set('$$comment', expr.value[3].value)
+                            set('$$comment', expr.value[3].value);
+                            set('$$type', expr.value[2].value);
                         }
                         searchChild();
                         path.pop();
@@ -164,6 +173,8 @@ let search = ((obj) => {
     return search;
 })
 
+let rls = analyze(tokensWithLb);
+console.log(rls);
 let result = window['result'] = {}
-let str = search(result)(rl, '', '');
-console.log(result);
+let str = search(result)(rls, '', '');
+

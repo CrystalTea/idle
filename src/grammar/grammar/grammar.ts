@@ -103,6 +103,9 @@ export function analyze(_ipt : {
         if (resolve.length === 2 && resolve[1].word === gWords.RL) {
             rls.push(resolve[1]);
         }
+
     }
-    return rls
+    // console.log(resolve[0])
+    // return rls
+    return resolve[0];
 }
