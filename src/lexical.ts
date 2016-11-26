@@ -11,7 +11,7 @@ export class Token {
 }
 
 export let Word = {
-    colon: "':'", // 冒号
+    colon: ":", // 冒号
     number: "number",
     string: "string",
     id: "id",
@@ -28,8 +28,8 @@ export let Word = {
     kw_number:'kw_number',
     kw_object:'kw_object',
     kw_array:'kw_array',
-    leftBrace: "'{'",
-    rightBrace: "'}'",
+    leftBrace: "{",
+    rightBrace: "}",
     lineBreak: 'lineBreak',
     EOF:'EOF'
 }

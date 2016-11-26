@@ -1,80 +1,67 @@
-import {lWords, gWords, exprs} from "./exprs";
+import {lWords, gWords, exprs, wish} from "./exprs";
 import * as _ from 'lodash'
 import {match} from './common'
 
-let resolve = ['EOF'];
-let input = [
-    "res",
-    "string",
-    "'{'",
-    "post",
-    "'{'",
-    "comment",
-    "string",
-    "route",
-    "id",
-    "string",
-    "param",
-    "id",
-    "':'",
-    "kw_object",
-    "string",
-    "'{'",
-    "id",
-    "':'",
-    "kw_string",
-    "string",
-    "id",
-    "':'",
-    "kw_string",
-    "string",
-    "'}'",
-    "data",
-    "id",
-    "':'",
-    "kw_array",
-    "string",
-    "'{'",
-    "id",
-    "':'",
-    "kw_string",
-    "string",
-    "id",
-    "':'",
-    "kw_string",
-    "string",
-    "'}'",
-    "'}'",
-    "'}'",
-    "EOF"
+let resolve : {
+    word : string,
+    value : any
+}[] = [
+    {
+        word: 'EOF',
+        value: 'EOF'
+    }
+];
+let input : {
+    word : string,
+    value : any
+}[] = [
+    {
+        word: 'EOF',
+        value: 'EOF'
+    }
 ];
 
-export function analyze(_ipt) {
+export function analyze(_ipt : {
+    word: string,
+    value: string
+}[]) {
     input = _ipt;
-    console.log(input);
 
     let pushNext = () => {
         let next = input.shift();
-        if (next === 'EOF') {
+        if (next.word === 'EOF') {
             throw '预期外的文件结尾';
         }
         resolve.push(next)
     }
 
     let count = 0
-    while (resolve[resolve.length - 1] != 'EOF' || input[0] != 'EOF') {
+    let rls = [];
+    while (resolve[resolve.length - 1].word != 'EOF' || input[0].word != 'EOF') {
         count++;
+        /*
+         match用于匹配生成式，返回一个生成式
+         exprs存储了所有的生成式，对照表在grammer.html
+        */
         let matched = match(resolve);
+        let pushPrev = () => {
+            let length = matched.length - 1;
+            resolve.splice(resolve.length - length, length, matched[0]);
+        }
         if (matched && matched.length > 0) {
-            if (_.isEqual(matched, exprs[0])) {
+            if (_.isEqual(matched.map(x => x.word), exprs[0])) {
                 let matched = match(resolve.concat(input[0]))
                 if (matched.length > 0) {
                     pushNext();
+                } else {
+                    pushPrev();
                 }
-            } else if (_.isEqual(matched, exprs[2])) {
+            } else if (_.isEqual(matched.map(x => x.word), exprs[2])) {
                 let matched = match(resolve.concat(input[0]))
                 if (matched.length > 0) {
                     pushNext();
+                } else {
+                    pushPrev();
                 }
             } else {
                 let length = matched.length - 1;
@@ -82,7 +69,14 @@ export function analyze(_ipt) {
             }
         } else {
             let next = input.shift();
-            if (next === 'EOF') {
+            let wishNext : string[] = wish[resolve[resolve.length - 1].word];
+            if (wishNext) {
+                let f = wishNext.filter(x => x === next.word);
+                if (f.length === 0) {
+                    throw `期待得到“ ‘${wishNext.join('’ 或 ‘')}’ ”，但是得到了${next.word}`;
+                }
+            }
+            if (next.word === 'EOF') {
                 throw '预期外的文件结尾';
             }
             resolve.push(next)
@@ -97,10 +91,18 @@ export function analyze(_ipt) {
             `
         document
             .getElementById(`tdl${count}`)
-            .innerText = resolve.join(' ');
+            .innerText = resolve
+            .map(x => x.word)
+            .join(' ');
         document
             .getElementById(`tdr${count}`)
-            .innerText = input.join(' ');
-        // if (count > 1000)     break;
+            .innerText = input
+            .map(x => x.word)
+            .join(' ');
+        // if (count > 100) {     break; }
+        if (resolve.length === 2 && resolve[1].word === gWords.RL) {
+            rls.push(resolve[1]);
+        }
     }
+    return rls
 }

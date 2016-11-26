@@ -1,5 +1,5 @@
 export let lWords = {
-    colon: "':'", // 冒号
+    colon: ":", // 冒号
     number: "number",
     string: "string",
     id: "id",
@@ -16,8 +16,8 @@ export let lWords = {
     kw_number: 'kw_number',
     kw_object: 'kw_object',
     kw_array: 'kw_array',
-    leftBrace: "'{'",
-    rightBrace: "'}'",
+    leftBrace: "{",
+    rightBrace: "}",
     lineBreak: 'lineBreak',
     EOF: 'EOF'
 }
@@ -149,3 +149,52 @@ export let exprs = [
     ],
     ['EOF', 'EOF', gWords.RL]
 ];
+
+export let wish = {
+    '<KVP>': [lWords.id,lWords.rightBrace],
+    '<KVL>': [lWords.id,lWords.rightBrace],
+    '<COMMENT>':[lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    '<ROUTE>':[lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    '<PARAM>':[lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    '<DATA>':[lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    '<QUERY>':[lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+    
+}
+
+export let exprNext = [
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.rightBrace],
+    [lWords.id,lWords.comment,lWords.param,lWords.data,lWords.route],
+
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+    [lWords.rightBrace,lWords.comment,lWords.param,lWords.data,lWords.route],
+
+    [lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+    [lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+    [lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+    [lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+    [lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+    [lWords.rightBrace,lWords.get,lWords.post,lWords.put,lWords.delete],
+
+    ['EOF',lWords.res],
+    ['EOF',lWords.res],
+    ['EOF',lWords.res],
+
+    ['EOF'],
+    
+    
+]
