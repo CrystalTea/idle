@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grammar</title>
+</head>
+<style>
+    table{
+        border-spacing: 0;
+    }
+    td{
+        border-bottom: 1px solid saddlebrown;
+        padding:5px 5px;
+        font-family:"微软雅黑";
+        font-size: 18px;
+        line-height: 28px;
+    }
+    td.id{
+        /*display: none;*/
+    }
+    td.left{
+        text-align: right;
+    }
+    td.arrow{
+        padding: 0 10px
+    }
+</style>
+<body>
+<div id="content">
+    <table>
+    <tr><td colspan="4">KVP</td></tr>
+    <tr> <td class="id">00</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_string</td></tr>
+    <tr> <td class="id">01</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_string + string</td></tr>
+    <tr> <td class="id">02</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_number</td></tr>
+    <tr> <td class="id">03</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_number + string</td></tr>
+    <tr> <td class="id">04</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_object + &lt;OBJ&gt;</td></tr>
+    <tr> <td class="id">05</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_object + string + &lt;OBJ&gt;</td></tr>
+    <tr> <td class="id">06</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_list + &lt;OBJ&gt;</td></tr>
+    <tr> <td class="id">07</td> <td class="left">&lt;KVP&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> id + : + kw_list + string + &lt;OBJ&gt;</td></tr>
+    <tr><td colspan="4">KVL / OBJ</td></tr>
+    <tr> <td class="id">08</td> <td class="left">&lt;KVL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;KVP&gt;</td></tr>
+    <tr> <td class="id">09</td> <td class="left">&lt;KVL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;KVL&gt; + &lt;KVP&gt;</td></tr>
+    <tr> <td class="id">10</td> <td class="left">&lt;OBJ&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> { + &lt;KVL&gt; + }</td></tr>
+    <tr><td colspan="4">QUERY</td></tr>
+    <tr> <td class="id">11</td> <td class="left">&lt;COMMENT&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> comment + string</td></tr>
+    <tr> <td class="id">12</td> <td class="left">&lt;ROUTE&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> route + id + string</td></tr>
+    <tr> <td class="id">13</td> <td class="left">&lt;PARAM&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> param + &lt;KVP&gt;</td></tr>
+    <tr> <td class="id">14</td> <td class="left">&lt;DATA&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> data + &lt;KVP&gt;</td></tr>
+    <tr> <td class="id">15</td> <td class="left">&lt;Qs&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;COMMENT&gt; | &lt;ROUTE&gt; | &lt;PARAM&gt; | &lt;DATA&gt;</td></tr>
+    <tr> <td class="id">16</td> <td class="left">&lt;QsL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;Qs&gt;</td></tr>
+    <tr> <td class="id">17</td> <td class="left">&lt;QsL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;QsL&gt; + &lt;Qs&gt;</td></tr>
+    <tr> <td class="id">18</td> <td class="left">&lt;QUERY&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> post + { + &lt;QsL&gt; + }</td></tr>
+    <tr> <td class="id">19</td> <td class="left">&lt;QUERY&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> get + { + &lt;QsL&gt; + }</td></tr>
+    <tr> <td class="id">20</td> <td class="left">&lt;QUERY&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> put + { + &lt;QsL&gt; + }</td></tr>
+    <tr> <td class="id">21</td> <td class="left">&lt;QUERY&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> delete + { + &lt;QsL&gt; + }</td></tr>
+    <tr> <td class="id">22</td> <td class="left">&lt;QL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;QUERY&gt;</td></tr>
+    <tr> <td class="id">23</td> <td class="left">&lt;QL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;QL&gt; + &lt;QUERY&gt;</td></tr>
+    <tr> <td class="id">24</td> <td class="left">&lt;RES&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> res + string + { + QL + }</td></tr>
+    <tr> <td class="id">25</td> <td class="left">&lt;RL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;RES&gt;</td></tr>
+    <tr> <td class="id">26</td> <td class="left">&lt;RL&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;RL&gt; + &lt;RES&gt;</td></tr>
+    <tr> <td class="id">27</td> <td class="left">&lt;S&gt;</td><td class="arrow"> -&gt; </td> <td class="right"> &lt;RL&gt; + &lt;EOF&gt;</td></tr>
+    </table>
+</div>
+</body>
+</html>
+
