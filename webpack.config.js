@@ -4,7 +4,7 @@ var path = require('path');
 
 module.exports = {
     //插件项
-    plugins: [commonsPlugin],
+    // plugins: [commonsPlugin],
     //页面入口文件配置
     entry: {
         breeze: './src/main.ts'

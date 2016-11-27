@@ -5,12 +5,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        table {
+            border-spacing: 0;
+            table-layout: fixed;
+        }
+        
+        td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
         .left {
             width: 50%
         }
         
         .right {
-            height: 50%
+            height: 50%;
+            overflow: hidden
         }
     </style>
 </head>

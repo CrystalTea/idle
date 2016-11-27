@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        padding: 20px;
+        margin: 0;
+        height: 100%;
+        min-width: 1024px;
+    }
+    
+    textarea {
+        height: 80%;
+        width: 45%;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+<body>
+
+    <textarea id="res" cols="30" rows="10">
+    url "/v1/{orgid}/userinfoes" {
+
+        post {
+            # "通过openid获取用户信息的接口"
+
+            h Content-Type "application/json"
+
+            r orgid "机构id"
+
+            p start:number "开始页"
+            p size:number "分页大小"
+
+            b admin:object "管理员信息" {
+                name:string "管理员的名字"
+                pass:string "管理员的密码"
+            }
+            b token:string "口令"
+
+            res msg:string "返回的消息"
+            res code:number "返回码"
+            res data:object "返回的数据"{
+                list:array "用户信息列表" {
+                    name:string "用户名"
+                    phone:string "电话"
+                }
+            }
+
+        }
+        
+        get {
+            # "通过openid获取用户信息的接口"
+
+            h Content-Type "application/json"
+
+            r orgid "机构id"
+
+            p start:number "开始页"
+            p size:number "分页大小"
+
+            b admin:object "管理员信息" {
+                name:string "管理员的名字"
+                pass:string "管理员的密码"
+            }
+            b token:string "口令"
+
+            res msg:string "返回的消息"
+            res code:number "返回码"
+            res data:object "返回的数据"{
+                list:array "用户信息列表" {
+                    name:string "用户名"
+                    phone:string "电话"
+                }
+            }
+
+        }
+    }
+    url "/v2/{orgid}/userinfoes" {
+
+        post {
+            # "通过openid获取用户信息的接口"
+
+            h Content-Type "application/json"
+
+            r orgid "机构id"
+
+            p start:number "开始页"
+            p size:number "分页大小"
+
+            b admin:object "管理员信息" {
+                name:string "管理员的名字"
+                pass:string "管理员的密码"
+            }
+            b token:string "口令"
+
+            res msg:string "返回的消息"
+            res code:number "返回码"
+            res data:object "返回的数据"{
+                list:array "用户信息列表" {
+                    name:string "用户名"
+                    phone:string "电话"
+                }
+            }
+
+        }
+    }
+    </textarea>
+    <button onclick="compileIt()">编译</button>
+    <textarea id="rst" cols="30" rows="10"></textarea>
+    <script src="breeze.js"></script>
+    <script>
+    var compile = window.BreezeIdle.compileToObj;
+    var compileToMarkdown = window.BreezeIdle.compileToMarkdown;
+
+    function compileIt(){
+        var resEl = document.getElementById('res');
+        var rstEl = document.getElementById('rst');
+        var res = resEl.value;
+        // 获取分析树
+        var result = compile(res); 
+        // 编译到Markdown格式
+        var resultStr = compileToMarkdown(result)
+        rstEl.value = resultStr;
+    }
+
+    </script>
+</body>
+
+</html>

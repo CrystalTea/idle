@@ -21,21 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="value.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/grammar/grammar/value.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="513">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -45,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/src/grammar/grammar.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="352">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="e#789#793#0" expanded="true" />
                 <element signature="e#796#800#0" expanded="true" />
@@ -183,12 +173,7 @@
                 <element signature="e#4874#4878#0" expanded="true" />
                 <element signature="e#4881#4885#0" expanded="true" />
                 <element signature="e#4945#4949#0" expanded="true" />
-                <element signature="e#4950#4954#0" expanded="true" />
-                <element signature="e#4979#4983#0" expanded="true" />
-                <element signature="e#5009#5013#0" expanded="true" />
-                <element signature="e#5015#5019#0" expanded="true" />
-                <element signature="e#5022#5026#0" expanded="true" />
-                <element signature="e#5029#5033#0" expanded="true" />
+                <element signature="e#5031#5035#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -234,7 +219,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/main.ts" />
         <option value="$PROJECT_DIR$/src/grammar1" />
         <option value="$PROJECT_DIR$/src/grammar/index.ts" />
@@ -244,6 +228,7 @@
         <option value="$PROJECT_DIR$/src/grammar/grammar/common.ts" />
         <option value="$PROJECT_DIR$/src/grammar/grammar/value.ts" />
         <option value="$PROJECT_DIR$/src/grammar/grammar.html" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -447,15 +432,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1480088980349</updated>
-      <workItem from="1480088981470" duration="13371000" />
+      <workItem from="1480088981470" duration="14014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13371000" />
+    <option name="totallyTimeSpent" value="14014000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -656,7 +641,7 @@
     <entry file="file://$PROJECT_DIR$/src/grammar/grammar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="e#789#793#0" expanded="true" />
             <element signature="e#796#800#0" expanded="true" />
@@ -794,20 +779,15 @@
             <element signature="e#4874#4878#0" expanded="true" />
             <element signature="e#4881#4885#0" expanded="true" />
             <element signature="e#4945#4949#0" expanded="true" />
-            <element signature="e#4950#4954#0" expanded="true" />
-            <element signature="e#4979#4983#0" expanded="true" />
-            <element signature="e#5009#5013#0" expanded="true" />
-            <element signature="e#5015#5019#0" expanded="true" />
-            <element signature="e#5022#5026#0" expanded="true" />
-            <element signature="e#5029#5033#0" expanded="true" />
+            <element signature="e#5031#5035#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="513">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>

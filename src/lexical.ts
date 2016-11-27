@@ -2,8 +2,8 @@
 
 
 let testNum = window['testNum'] = x => /^[\d|\.]$/.test(x.toString());
-let testLetter = window['testLetter'] = x => /^[\w\u4E00-\u9FA5\uF900-\uFA2D#\$_]$/.test(x.toString()) && !testNum(x.toString());
-let testSymbol = window['testSymbol'] = x => /^[\:+\-*/=;,\(\)\[\]<>\{\}\.]$/.test(x.toString());
+let testLetter = window['testLetter'] = x => /^[\w\u4E00-\u9FA5\uF900-\uFA2D#\$_\-]$/.test(x.toString()) && !testNum(x.toString());
+let testSymbol = window['testSymbol'] = x => /^[\:+*/=;,\(\)\[\]<>\{\}\.]$/.test(x.toString());
 let testSpace = window['testSpace'] = x => /^\s$/.test(x.toString());
 
 export class Token {
@@ -24,6 +24,8 @@ export let Word = {
     route: "route",
     param: "param",
     data: "data",
+    response: "response",
+    head: "http_head",
     kw_string:'kw_string',
     kw_number:'kw_number',
     kw_object:'kw_object',
@@ -132,12 +134,22 @@ export module lexical {
                                 result.push(new Token(Word.param, cache));
                                 break;
 
-                            case 'd':
-                            case 'data':
+                            case 'b':
+                            case 'body':
                                 result.push(new Token(Word.data, cache));
                                 break;
 
                             case 'res':
+                            case 'response':
+                                result.push(new Token(Word.response, cache));
+                                break;
+
+                            case 'h':
+                            case 'head':
+                                result.push(new Token(Word.head, cache));
+                                break;
+
+                            case 'url':
                                 result.push(new Token(Word.res, cache));
                                 break;
 
@@ -197,7 +209,7 @@ export module lexical {
         col = 0;
         let _result = result.map(x => x);
         result = [];
-        console.log('line ', lineNum, ' : ', _result.map(x => `(${x.word}: "${x.value}")`).join(' | '));
+        // console.log('line ', lineNum, ' : ', _result.map(x => `(${x.word}: "${x.value}")`).join(' | '));
         return _result;
     }
 }

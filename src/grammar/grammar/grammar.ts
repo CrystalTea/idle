@@ -73,39 +73,34 @@ export function analyze(_ipt : {
             if (wishNext) {
                 let f = wishNext.filter(x => x === next.word);
                 if (f.length === 0) {
+
+                    resolve = [{word: 'EOF',value: 'EOF'}];
+                    input = [{word: 'EOF',value: 'EOF'}];
                     throw `期待得到“ ‘${wishNext.join('’ 或 ‘')}’ ”，但是得到了${next.word}`;
                 }
             }
             if (next.word === 'EOF') {
+
+                resolve = [{word: 'EOF',value: 'EOF'}];
+                input = [{word: 'EOF',value: 'EOF'}];
                 throw '预期外的文件结尾';
             }
             resolve.push(next)
         }
-        document
-            .getElementById('table')
-            .innerHTML += `
-                <tr>
-                    <td id='tdl${count}' class='left'></td>
-                    <td id='tdr${count}' class='right'></td>
-                </tr>
-            `
-        document
-            .getElementById(`tdl${count}`)
-            .innerText = resolve
-            .map(x => x.word)
-            .join(' ');
-        document
-            .getElementById(`tdr${count}`)
-            .innerText = input
-            .map(x => x.word)
-            .join(' ');
-        // if (count > 100) {     break; }
+        // document     .getElementById('table')     .innerHTML += `         <tr>
+        //      <td id='tdl${count}' class='left'></td>             <td id='tdr${count}'
+        // class='right'></td>         </tr>     ` document
+        // .getElementById(`tdl${count}`)     .innerText = resolve     .map(x => x.word)
+        //     .join(' '); document     .getElementById(`tdr${count}`)     .innerText =
+        // input     .map(x => x.word)     .join(' '); if (count > 100) {     break; }
         if (resolve.length === 2 && resolve[1].word === gWords.RL) {
             rls.push(resolve[1]);
         }
 
     }
-    // console.log(resolve[0])
-    // return rls
-    return resolve[0];
+    // console.log(resolve[0]) return rls
+    let _rls = resolve[0];
+    resolve = [{word: 'EOF',value: 'EOF'}];
+    input = [{word: 'EOF',value: 'EOF'}];
+    return _rls;
 }
