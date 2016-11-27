@@ -63,21 +63,18 @@ export let compileToMarkdown = (jsObj) => {
                     .split(':')
                     .slice(1)
                     .join(':');
-                return ` ( ${value}, ${transType(type)}类型 ) `
+                return `\t( ${value},${transType(type)}类型 ) `
             } else {
                 let isObj = obj.$$type === 'object';
-                let result = ` ( ${obj.$$comment}, ${transType(obj.$$type)}类型)`;
+                let result = `\t( ${obj.$$comment}, ${transType(obj.$$type)}类型)`;
                 result += `
 `
                 for (let i in obj) {
                     if (i !== '$$comment' && i !== '$$type') {
-                        result += `${space}- ${i}` + transObj(obj[i], space + '\t') + `
+                        result += `${space}- ${i}` + '\t' + transObj(obj[i], space + '\t') + `
 `;
                     }
                 }
-
-//                 result += `
-// `;
                 return result;
             }
         }
@@ -94,7 +91,7 @@ export let compileToMarkdown = (jsObj) => {
             result += `- 协议头
 `
             for (let i in head) {
-                result += space + i + `    ( ${head[i]} )
+                result += space + i + `\t( ${head[i]} )
 `
             }
         }
@@ -104,7 +101,7 @@ export let compileToMarkdown = (jsObj) => {
             result += `- 路由
 `
             for (let i in route) {
-                result += space + i + `    ( ${route[i]} )
+                result += space + i + `\t( ${route[i]} )
 `
             }
         }
@@ -128,7 +125,7 @@ export let compileToMarkdown = (jsObj) => {
             result += `- 请求体
 `
             for (let i in body) {
-                result += '\t- ' + i + ' ' + transObj(body[i], '\t\t') + `
+                result += '\t- ' + i + '\t' + transObj(body[i], '\t\t') + `
 `;
             }
             result += `
@@ -140,7 +137,7 @@ export let compileToMarkdown = (jsObj) => {
             result += `- 返回值
 `
             for (let i in response) {
-                result += '\t- ' + i + ' ' + transObj(response[i], '\t\t') + `
+                result += '\t- ' + i + '\t' + transObj(response[i], '\t\t') + `
 `
             }
             result += `
@@ -153,12 +150,12 @@ export let compileToMarkdown = (jsObj) => {
 `
     reqs.forEach(x => resultStr += analyzeReqobj(x));
 
-    resultStr = resultStr.replace(/\n\n/g,'\n');
+    resultStr = resultStr.replace(/\n\n/g, '\n');
 
     return resultStr;
 }
 
 window['BreezeIdle'] = {
-    compileToMarkdown:compileToMarkdown,
-    compileToObj:compile
+    compileToMarkdown: compileToMarkdown,
+    compileToObj: compile
 }
